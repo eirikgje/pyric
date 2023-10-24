@@ -39,9 +39,10 @@ def simulate_cmb(
     return cmb_map
 
 
-def read_353_map(polarization=True, nside=16,
-                 map_path='/home/eirik/data/vincent_forecast/HFI_SkyMap_353-psb-field-IQU_2048_R3.00_full.fits'):
-    """ Utility function for creating a 'realistic' dust simulation using the
+def read_353_map(
+        polarization=True, nside=16,
+        map_path='/home/eirik/data/HFI_SkyMap_353-psb_2048_R3.01_full.fits'):
+    """Utility function for creating a 'realistic' dust simulation using the
     353 GHz Planck amplitude map.
     """
     inmap = healpy.ud_grade(
@@ -55,18 +56,14 @@ def read_353_map(polarization=True, nside=16,
     return dustamps
 
 
-def read_synch_init(polarization=True, nside=16):
+def read_synch_init(
+        polarization=True, nside=16,
+        map_path='/home/eirik/data/CG_030_IQU_n0512_v1.fits'):
     """ Utility function for creating a 'realistic' synch simulation using a
     Commander input file, with a reference frequency of 30 GHz.
-
-    This isn't really well balanced and I think 30 GHz is not a good reference
-    frequency for this, so I will try to find a better template.)
     """
 
-    synch_template = '/home/eirik/data/vincent_forecast/synch_init_30Ghz.fits'
-    inmap = healpy.ud_grade(healpy.read_map(synch_template, field=None), nside)
-    # I have no idea about what the proper amplitude of this should be
-    inmap /= 100
+    inmap = healpy.ud_grade(healpy.read_map(map_path, field=None), nside)
     if polarization:
         synchamp = inmap
     else:

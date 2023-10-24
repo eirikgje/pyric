@@ -17,8 +17,8 @@ using uniform noise, and then samples the posterior.
 
 # nside=2
 # nside = 32
-# nside = 8
-nside = 16
+nside = 8
+# nside = 16
 npix = 12 * nside ** 2
 polarization = True
 include_CMB = True
@@ -33,7 +33,7 @@ dust_specind_range = [1.0, 2.5]
 dust_temperature = 20.0
 synch_reference_freq = 30.0
 synch_spectral_index = -3.1
-synch_specind_range = [-3.4, -2.8]
+synch_specind_range = [-3.2, -2.9]
 plotfreqs = np.arange(freqs[0], freqs[-1], 1/100)
 noise_base_sigma_temp = 2 * (nside / 8) ** 2
 noise_base_sigma_pol = 0.05 * (nside / 8) ** 2
